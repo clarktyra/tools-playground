@@ -160,6 +160,18 @@ function generatePassword() {
   }
   var listOfCharacters = createList(isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters);
   console.log("listOfCharacters: ", listOfCharacters)
+
+  //actually formulate password now with the correct list
+  for (var i = 0; i < passwordLength; i++){
+    var lenghtOfList = listOfCharacters.length;
+    var getRandomIndex = Math.floor(Math.random()* lenghtOfList)
+    password += listOfCharacters[getRandomIndex]
+  }
+  console.log("password: ", password)
+
+  // put password on screen
+  return password
+
 }
 
 // GIVEN I need a new, secure password click the button to generate a password
