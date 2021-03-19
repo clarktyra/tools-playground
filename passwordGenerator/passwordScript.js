@@ -15,12 +15,66 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   // variables: specialCharacters, numbers, lowerCaseLetters, upperCaseLetters,
   // isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters
-  var specialCharacters = [ "!",  `"`, "#", "$", "%", "&", `'`, "(",  ")",  "*", "+", ",",  "-", ".", "/", ":", ";", "<", "=", ">", "?",  "@", "[", `\`, "]", `^`, "_", ```, `{`, `|`, `}`, `~` ];
-  var numbers = [1,2,3,4,5,6,7,8,9,0];
+  var specialCharacters = [
+    "@",
+    "%",
+    "+",
+    "\\",
+    "/",
+    "'",
+    "!",
+    "#",
+    "$",
+    "^",
+    "?",
+    ":",
+    ",",
+    ")",
+    "(",
+    "}",
+    "{",
+    "]",
+    "[",
+    "~",
+    "-",
+    "_",
+    ".",
+  ];
+  var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   var lowerCaseLetters = "abcdefghijklmnopgrstuvwzyz";
   var upperCaseLetters = lowerCaseLetters.toUpperCase();
-  var isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters = false;
+  var isSpecialCharacters,
+    isNumbers,
+    isLoweCaseLetters,
+    isUpperCaseLetters = false;
+  var password = "";
+  var passwordLength = 0;
 
+  //prompts
+
+  function getPasswordLength() {
+    passwordLength = parseInt(
+      prompt(
+        "How many characters would you like the password to be? (between 8-128"
+      )
+    );
+    if (passwordLength >= 8 && passwordLength <= 128) {
+      return;
+    } else getPasswordLength();
+  }
+  getPasswordLength();
+  isSpecialCharacters = confirm("Do you want special charcters", "yes/no");
+  isNumbers           = confirm("Do you want numbers", "yes/no");
+  isLoweCaseLetters   = confirm("Do you want lower case letters", "yes/no");
+  isUpperCaseLetters  = confirm("Do you want upper case letters", "yes/no");
+  console.log(typeof passwordLength);
+  console.log(
+    passwordLength,
+    isSpecialCharacters,
+    isNumbers,
+    isLoweCaseLetters,
+    isUpperCaseLetters
+  );
 }
 
 // GIVEN I need a new, secure password click the button to generate a password
