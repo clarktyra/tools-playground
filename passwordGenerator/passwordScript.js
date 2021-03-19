@@ -1,20 +1,14 @@
-// Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
+ writePassword = () => {
   const password = generatePassword();
   const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-function generatePassword() {
-  // variables: specialCharacters, numbers, lowerCaseLetters, upperCaseLetters,
-  // isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters
+ generatePassword = () => {
   const specialCharacters = [
     "@",
     "%",
@@ -97,14 +91,11 @@ function generatePassword() {
     'Y',
     'Z'
   ];
-  let isSpecialCharacters,
-    isNumbers,
-    isLoweCaseLetters,
-    isUpperCaseLetters = false;
+  let isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters = false;
   let password = "";
   let passwordLength = 0;
 
-  function getPasswordLength() {
+  getPasswordLength = () => {
     passwordLength = parseInt(
       prompt(
         "How many characters would you like the password to be? (between 8-128)"
@@ -119,19 +110,19 @@ function generatePassword() {
   }
   getPasswordLength();
 
-  function getPrompts(){
+  getPasswordCriteria = () => {
     isSpecialCharacters = confirm("Do you want special charcters?");
     isNumbers           = confirm("Do you want numbers?");
     isLoweCaseLetters   = confirm("Do you want lower case letters?");
     isUpperCaseLetters  = confirm("Do you want upper case letters?");
     if (!isSpecialCharacters && !isNumbers && !isLoweCaseLetters && !isUpperCaseLetters){
       alert("At least 1 type(specials, numbers, characters) needs to be allowed.")
-      getPrompts();
+      getPasswordCriteria();
     }
   }
-  getPrompts();
+  getPasswordCriteria();
 
-  function createList(array1, array2, array3, array4){
+  createList = (array1, array2, array3, array4) => {
     var array = [];
     if(array1){
       array = array.concat(specialCharacters)
@@ -149,13 +140,11 @@ function generatePassword() {
   }
   const listOfCharacters = createList(isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters);
 
-  //actually formulate password now with the correct list
   for (let i = 0; i < passwordLength; i++){
     const lenghtOfList = listOfCharacters.length;
     const getRandomIndex = Math.floor(Math.random()* lenghtOfList)
     password += listOfCharacters[getRandomIndex]
   }
-  // put password on screen
-  return password
 
+  return password
 }
