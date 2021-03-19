@@ -40,9 +40,63 @@ function generatePassword() {
     "_",
     ".",
   ];
-  var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  var lowerCaseLetters = "abcdefghijklmnopgrstuvwzyz";
-  var upperCaseLetters = lowerCaseLetters.toUpperCase();
+  var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  var lowerCaseLetters = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z'
+  ];
+  var upperCaseLetters = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ];
   var isSpecialCharacters,
     isNumbers,
     isLoweCaseLetters,
@@ -86,6 +140,26 @@ function generatePassword() {
     isLoweCaseLetters,
     isUpperCaseLetters
   );
+
+  var listOfCharacters = []
+  function createList(array1, array2, array3, array4){
+    var array = [];
+    if(array1){
+      array = array.concat(specialCharacters)
+    }
+    if(array2){
+      array = array.concat(numbers)
+    }
+    if(array3){
+      array = array.concat(lowerCaseLetters)
+    }
+    if(array4){
+      array = array.concat(upperCaseLetters)
+    }
+    return array;
+  }
+  var listOfCharacters = createList(isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters);
+  console.log("listOfCharacters: ", listOfCharacters)
 }
 
 // GIVEN I need a new, secure password click the button to generate a password
