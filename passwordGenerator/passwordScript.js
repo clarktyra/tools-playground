@@ -1,10 +1,10 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
@@ -15,7 +15,7 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   // variables: specialCharacters, numbers, lowerCaseLetters, upperCaseLetters,
   // isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters
-  var specialCharacters = [
+  const specialCharacters = [
     "@",
     "%",
     "+",
@@ -40,8 +40,8 @@ function generatePassword() {
     "_",
     ".",
   ];
-  var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  var lowerCaseLetters = [
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const lowerCaseLetters = [
     'a',
     'b',
     'c',
@@ -69,7 +69,7 @@ function generatePassword() {
     'y',
     'z'
   ];
-  var upperCaseLetters = [
+  const upperCaseLetters = [
     'A',
     'B',
     'C',
@@ -97,14 +97,12 @@ function generatePassword() {
     'Y',
     'Z'
   ];
-  var isSpecialCharacters,
+  let isSpecialCharacters,
     isNumbers,
     isLoweCaseLetters,
     isUpperCaseLetters = false;
-  var password = "";
-  var passwordLength = 0;
-
-  //prompts
+  let password = "";
+  let passwordLength = 0;
 
   function getPasswordLength() {
     passwordLength = parseInt(
@@ -120,6 +118,7 @@ function generatePassword() {
     }
   }
   getPasswordLength();
+
   function getPrompts(){
     isSpecialCharacters = confirm("Do you want special charcters?");
     isNumbers           = confirm("Do you want numbers?");
@@ -131,17 +130,7 @@ function generatePassword() {
     }
   }
   getPrompts();
-  
-  console.log(typeof passwordLength);
-  console.log(
-    passwordLength,
-    isSpecialCharacters,
-    isNumbers,
-    isLoweCaseLetters,
-    isUpperCaseLetters
-  );
 
-  var listOfCharacters = []
   function createList(array1, array2, array3, array4){
     var array = [];
     if(array1){
@@ -158,39 +147,15 @@ function generatePassword() {
     }
     return array;
   }
-  var listOfCharacters = createList(isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters);
-  console.log("listOfCharacters: ", listOfCharacters)
+  const listOfCharacters = createList(isSpecialCharacters, isNumbers, isLoweCaseLetters, isUpperCaseLetters);
 
   //actually formulate password now with the correct list
-  for (var i = 0; i < passwordLength; i++){
-    var lenghtOfList = listOfCharacters.length;
-    var getRandomIndex = Math.floor(Math.random()* lenghtOfList)
+  for (let i = 0; i < passwordLength; i++){
+    const lenghtOfList = listOfCharacters.length;
+    const getRandomIndex = Math.floor(Math.random()* lenghtOfList)
     password += listOfCharacters[getRandomIndex]
   }
-  console.log("password: ", password)
-
   // put password on screen
   return password
 
 }
-
-// GIVEN I need a new, secure password click the button to generate a password
-// presented with a series of prompts for password criteria
-
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-
-// WHEN prompted for character types to include in the password
-// THEN I choose lowercase, uppercase, numeric, and/or special characters
-
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
