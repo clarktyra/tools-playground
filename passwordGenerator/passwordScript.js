@@ -55,18 +55,29 @@ function generatePassword() {
   function getPasswordLength() {
     passwordLength = parseInt(
       prompt(
-        "How many characters would you like the password to be? (between 8-128"
+        "How many characters would you like the password to be? (between 8-128)"
       )
     );
     if (passwordLength >= 8 && passwordLength <= 128) {
       return;
-    } else getPasswordLength();
+    } else {
+      alert("Please give a length between 8-128.")
+      getPasswordLength();
+    }
   }
   getPasswordLength();
-  isSpecialCharacters = confirm("Do you want special charcters", "yes/no");
-  isNumbers           = confirm("Do you want numbers", "yes/no");
-  isLoweCaseLetters   = confirm("Do you want lower case letters", "yes/no");
-  isUpperCaseLetters  = confirm("Do you want upper case letters", "yes/no");
+  function getPrompts(){
+    isSpecialCharacters = confirm("Do you want special charcters?");
+    isNumbers           = confirm("Do you want numbers?");
+    isLoweCaseLetters   = confirm("Do you want lower case letters?");
+    isUpperCaseLetters  = confirm("Do you want upper case letters?");
+    if (!isSpecialCharacters && !isNumbers && !isLoweCaseLetters && !isUpperCaseLetters){
+      alert("At least 1 type(specials, numbers, characters) needs to be allowed.")
+      getPrompts();
+    }
+  }
+  getPrompts();
+  
   console.log(typeof passwordLength);
   console.log(
     passwordLength,
