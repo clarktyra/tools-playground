@@ -7,6 +7,9 @@ function game(){
     var wantToPlay = confirm("Would you like to play Rock, Paper, Scissors?");
     if(wantToPlay) {
         getUserChoice();
+        console.log("userChoice: ", userChoice)
+        getComputerChoice();
+        console.log("computerChoice: ", computerChoice)
     } else{
         return
     }
@@ -19,6 +22,12 @@ function game(){
             alert("Sorry, choice has to be R, P, or S")
             getUserChoice()
         }
+    }
+
+    function getComputerChoice(){
+        var choiceArray = ["R", "P", "S"]
+        var index = Math.floor(Math.random() * 3)
+        computerChoice = choiceArray[index]
     }
 }
 game()
