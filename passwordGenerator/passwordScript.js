@@ -91,10 +91,12 @@ generatePassword = () => {
     "Y",
     "Z",
   ];
+  const myArrayLists = [specialCharacters, numbers, lowerCaseLetters, upperCaseLetters]
   let isSpecialCharacters,
     isNumbers,
     isLoweCaseLetters,
     isUpperCaseLetters = false;
+  let myBooleans;
   let password = "";
   let passwordLength = 0;
 
@@ -129,23 +131,22 @@ generatePassword = () => {
       );
       getPasswordCriteria();
     }
+    myBooleans = [isSpecialCharacters,
+      isNumbers,
+      isLoweCaseLetters,
+      isUpperCaseLetters]
   };
   getPasswordCriteria();
 
-  createList = (array1, array2, array3, array4) => {
-    var array = [];
-    if (array1) array = array.concat(specialCharacters);
-    if (array2) array = array.concat(numbers);
-    if (array3) array = array.concat(lowerCaseLetters);
-    if (array4) array = array.concat(upperCaseLetters);
-    return array;
+  createList = (boolean1, boolean2, boolean3, boolean4, array1, array2, array3, array4) => {
+    let list = [];
+    if (boolean1) list.push(...array1);
+    if (boolean2) list.push(...array2);
+    if (boolean3) list.push(...array3);
+    if (boolean4) list.push(...array4);
+    return list;
   };
-  const listOfCharacters = createList(
-    isSpecialCharacters,
-    isNumbers,
-    isLoweCaseLetters,
-    isUpperCaseLetters
-  );
+  const listOfCharacters = createList(...myBooleans, ...myArrayLists);
 
   for (let i = 0; i < passwordLength; i++) {
     const lenghtOfList = listOfCharacters.length;
