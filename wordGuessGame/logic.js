@@ -25,8 +25,16 @@ var time;
 var buttonEl = document.querySelector("button");
 var timerEl = document.querySelector(".timer");
 buttonEl.addEventListener("click", start);
+var word = "test";
+var listOfSelected = ["a", "e"];
 
-var listOfSelected = ["a"];
+document.addEventListener("keydown", function(event){
+    event.preventDefault();
+    var key = event.key.toLowerCase();
+    console.log(key)
+    listOfSelected.push(key);
+    dispayWord()
+})
 
 function countdownTimer() {
     clearInterval(countdown)
@@ -44,11 +52,11 @@ function countdownTimer() {
 function getWord(){
     var array = ["apple", "banana", "pear"]
     var index = Math.floor(Math.random()*3)
-    var word = array[index];
-    return word;
+    word = array[index];
+    
 }
 
-function dispayWord(word){
+function dispayWord(){
     var wordEl = document.querySelector("#wordArea")
     var array = []
     
@@ -59,13 +67,20 @@ function dispayWord(word){
             array.push("_")
         }
     }
-
     wordEl.textContent = array.join(" ")
 }
 
+
+document.addEventListener("keydown", function(event){
+    event.preventDefault();
+    var key = event.key.toLowerCase();
+    console.log(key)
+    listOfSelected.push(key)
+})
+
 function start(){
+    listOfSelected = [];
     countdownTimer()
-    var chosenWord = getWord()
-    console.log(chosenWord)
-    dispayWord(chosenWord)
+    getWord()
+    dispayWord()
 }
