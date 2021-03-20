@@ -24,9 +24,16 @@ var time;
 
 var buttonEl = document.querySelector("button");
 var timerEl = document.querySelector(".timer");
+var winsEl = document.querySelector("#wins")
+var lossesEl = document.querySelector("#losses")
+
+
 buttonEl.addEventListener("click", start);
 var word = "test";
 var listOfSelected = ["a", "e"];
+var wordArray;
+var wins = 0;
+var losses = 0;
 
 document.addEventListener("keydown", function(event){
     event.preventDefault();
@@ -39,11 +46,18 @@ document.addEventListener("keydown", function(event){
 function countdownTimer() {
     clearInterval(countdown)
 
-  time = 6;
+  time = 15;
   var countdown = setInterval(function () {
     time--;
     timerEl.textContent = time;
+    if (wordArray.join('') === word){
+        wins++;
+        winsEl.textContent = wins;
+        clearInterval(countdown)
+    }
     if(time <= 0) {
+        losses++;
+        lossesEl.textContent = losses;
         clearInterval(countdown)
     }
   }, 1000);
@@ -58,25 +72,19 @@ function getWord(){
 
 function dispayWord(){
     var wordEl = document.querySelector("#wordArea")
-    var array = []
+     wordArray = []
     
     for (var i = 0; i < word.length; i++){
         if(listOfSelected.includes(word[i])){
-            array.push(word[i])
+            wordArray.push(word[i])
         } else {
-            array.push("_")
+            wordArray.push("_")
         }
     }
-    wordEl.textContent = array.join(" ")
+    wordEl.textContent = wordArray.join(" ")
+    
 }
 
-
-document.addEventListener("keydown", function(event){
-    event.preventDefault();
-    var key = event.key.toLowerCase();
-    console.log(key)
-    listOfSelected.push(key)
-})
 
 function start(){
     listOfSelected = [];
