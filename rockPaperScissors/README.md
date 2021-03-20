@@ -1,10 +1,9 @@
-# Unit 03 Mini-Project: Rock, Paper, Scissors
+# Javascript: Rock, Paper, Scissors
 
-In this activity, you will work with a group to build a game using only JavaScript.
 
-## Instructions
 
-The completed application should meet the following criteria:
+## User Story
+
 
 * As a user, I want to play Rock, Paper, Scissors against an automated opponent.
 
@@ -18,30 +17,10 @@ The completed application should meet the following criteria:
 
 ### Specifications
 
-* Must use the `alert()`, `confirm()`, and `prompt()` methods to collect user input and display information to the user.
+* Uses the `alert()`, `confirm()`, and `prompt()` methods to collect user input and display information to the user.
 
-* The computer's selection must be random to ensure a fair game.
+* The computer's selection is random to ensure a fair game.
 
-## 💡 Notes
+## Link
 
-Refer to the documentation:
-
-* [MDN Web Docs on window.alert()](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
-
-* [MDN Web Docs on window.confirm()](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
-
-* [MDN Web Docs on window.prompt()](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-
-* [MDN Web Docs on Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
-
-## 🏆 Bonus
-
-If you have completed this activity, work through the following challenge with your group to further your knowledge:
-
-* How can you customize the appearance of the `alert()`, `confirm()`, and `prompt()` dialog boxes?
-
-Use [Google](https://www.google.com) or another search engine to research this.
-
----
-
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+[Lets go to Rock Paper Scissors](https://clarktyra.github.io/tools-playground/rockPaperScissors/index.html)
