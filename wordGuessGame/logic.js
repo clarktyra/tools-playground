@@ -24,9 +24,13 @@ var time;
 
 var buttonEl = document.querySelector("button");
 var timerEl = document.querySelector(".timer");
-buttonEl.addEventListener("click", countdownTimer);
+buttonEl.addEventListener("click", start);
+
+var listOfSelected = ["a"];
 
 function countdownTimer() {
+    clearInterval(countdown)
+
   time = 6;
   var countdown = setInterval(function () {
     time--;
@@ -35,4 +39,33 @@ function countdownTimer() {
         clearInterval(countdown)
     }
   }, 1000);
+}
+
+function getWord(){
+    var array = ["apple", "banana", "pear"]
+    var index = Math.floor(Math.random()*3)
+    var word = array[index];
+    return word;
+}
+
+function dispayWord(word){
+    var wordEl = document.querySelector("#wordArea")
+    var array = []
+    
+    for (var i = 0; i < word.length; i++){
+        if(listOfSelected.includes(word[i])){
+            array.push(word[i])
+        } else {
+            array.push("_")
+        }
+    }
+
+    wordEl.textContent = array.join(" ")
+}
+
+function start(){
+    countdownTimer()
+    var chosenWord = getWord()
+    console.log(chosenWord)
+    dispayWord(chosenWord)
 }
