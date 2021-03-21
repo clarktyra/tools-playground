@@ -21,7 +21,7 @@
 // timer, questions array of objects, initials, score
 
 // FUNCTIONS
-// start, displayQuestion, checkAnswer, quizOverDisplay
+// start, startTimer, displayQuestion, checkAnswer, quizOverDisplay
 
 const timerEl = document.getElementById("time");
 const startBtn = document.getElementById("start");
@@ -71,8 +71,28 @@ const questions = [
 let initials;
 let score;
 
+displayQuizOver = () => {
+    alert("displayQuizOver")
+}
+
+checkAnswer = () => {
+    alert("checkAnswer")
+}
+
+displayQuestion = () => {
+    alert("displayQuestion")
+    checkAnswer()
+    displayQuizOver();
+}
+
+startTimer = () => {
+    alert("startTimer")
+}
+
 start = () => {
     alert("start")
+    startTimer()
+    displayQuestion()
 }
 
 startBtn.onclick = start;
