@@ -22,13 +22,16 @@
 
 var time;
 
-var buttonEl = document.querySelector("button");
+var buttonEl = document.querySelector("#startBtn");
 var timerEl = document.querySelector(".timer");
 var winsEl = document.querySelector("#wins")
 var lossesEl = document.querySelector("#losses")
 
 
-buttonEl.addEventListener("click", start);
+buttonEl.addEventListener("click", function(event){
+    event.preventDefault()
+    start();
+});
 var word = "test";
 var listOfSelected = ["a", "e"];
 var wordArray;
