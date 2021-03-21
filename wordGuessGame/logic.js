@@ -1,87 +1,67 @@
-var time;
-var buttonEl = document.querySelector("#startBtn");
-var timerEl = document.querySelector(".timer");
-var winsEl = document.querySelector("#wins");
-var lossesEl = document.querySelector("#losses");
+const buttonEl  = document.querySelector("#startBtn")
+const timerEl   = document.querySelector(".timer")
+const winsEl    = document.querySelector("#wins")
+const lossesEl  = document.querySelector("#losses")
+const wordEl    = document.querySelector("#wordArea")
+let word
+let listOfSelected  = []
+let wordArray       = []
+let wins            = localStorage.getItem('wins')   || 0
+let losses          = localStorage.getItem('losses') || 0
+winsEl.textContent  = wins
+lossesEl.textContent= losses
 
-winsEl.textContent = localStorage.getItem('wins')
-lossesEl.textContent = localStorage.getItem('losses');
+buttonEl.addEventListener("click",  (event) => {
+    event.preventDefault()
+    getWord()
+  });
 
-buttonEl.addEventListener("click", function (event) {
-  event.preventDefault();
-  start();
+document.addEventListener("keydown", (event) => {
+  event.preventDefault()
+  const keyPressed = event.key.toLowerCase()
+  listOfSelected.push(keyPressed)
+  dispayWord(word)
 });
 
-var word;
-var listOfSelected = ["a", "e"];
-var wordArray =[];
-var wins = localStorage.getItem('wins') || 0;
-var losses = localStorage.getItem('losses') || 0;
-
-document.addEventListener("keydown", function (event) {
-  event.preventDefault();
-  var key = event.key.toLowerCase();
-  console.log(key);
-  listOfSelected.push(key);
-  dispayWord(word);
-});
-
-function countdownTimer() {
-  clearInterval(countdown);
-
-  time = 30;
-  timerEl.textContent = time;
-  var countdown = setInterval(function () {
-    time--;
-    timerEl.textContent = time;
-    if (wordArray.join("") === word) {
-      wins++;
-      localStorage.setItem('wins', wins);
-      winsEl.textContent = localStorage.getItem('wins');
-
-      clearInterval(countdown);
-    }
-    if (time <= 0) {
-      losses++;
-      localStorage.setItem('losses', losses);
-      lossesEl.textContent = localStorage.getItem('losses');
-    //   lossesEl.textContent = losses;
-
-      clearInterval(countdown);
-    }
-  }, 1000);
-}
-
-function getWord() {
-  fetch("https://random-word-api.herokuapp.com/word?number=1")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function(y){
-        word = y[0];
-        dispayWord(word)
-        countdownTimer()
-    })
-}
-
-function dispayWord(apiWord) {
-  var wordEl = document.querySelector("#wordArea");
-  wordArray = [];
-  
+dispayWord = (apiWord) => {
+  wordArray = []
     for (var i = 0; i < apiWord.length; i++) {
-      if (listOfSelected.includes(apiWord[i])) {
-        wordArray.push(apiWord[i]);
-      } else {
-        wordArray.push("_");
-      }
+        listOfSelected.includes(apiWord[i]) ? wordArray.push(apiWord[i]) : wordArray.push("_")
     }
-    wordEl.textContent = wordArray.join(" ");
-  
+    wordEl.textContent = wordArray.join(" ")
 }
 
-function start() {
-  listOfSelected = [];
-  //   countdownTimer();
-  getWord();
-  //   dispayWord();
-}
+countdownTimer = () => {
+    clearInterval(countdown)
+    let time = 30
+    timerEl.textContent = time
+    var countdown = setInterval(function () {
+      time--
+      timerEl.textContent = time
+      if (wordArray.join("") === word) {
+        wins++
+        localStorage.setItem('wins', wins)
+        winsEl.textContent = localStorage.getItem('wins');
+        clearInterval(countdown)
+      }
+      if (time <= 0) {
+        losses++
+        localStorage.setItem('losses', losses)
+        lossesEl.textContent = localStorage.getItem('losses');
+        clearInterval(countdown)
+      }
+    }, 1000)
+  }
+
+getWord = () => {
+    listOfSelected = []
+    fetch("https://random-word-api.herokuapp.com/word?number=1")
+      .then((response) => response.json())
+      .then((y) => {
+          word = y[0]
+          dispayWord(word)
+          countdownTimer()
+      })
+  }
+
+
