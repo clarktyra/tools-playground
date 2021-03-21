@@ -27,6 +27,7 @@ function countdownTimer() {
   clearInterval(countdown);
 
   time = 15;
+  timerEl.textContent = time;
   var countdown = setInterval(function () {
     time--;
     timerEl.textContent = time;
@@ -44,9 +45,6 @@ function countdownTimer() {
 }
 
 function getWord() {
-  //   var array = ["apple", "banana", "pear"];
-  //   var index = Math.floor(Math.random() * 3);
-  //   word = array[index];
   fetch("https://random-word-api.herokuapp.com/word?number=1")
     .then(function (response) {
       return response.json();
@@ -54,9 +52,9 @@ function getWord() {
     .then(function(y){
         word = y[0];
         dispayWord(word)
+        countdownTimer()
     })
-    .then(countdownTimer())
-    
+    // .then(countdownTimer())
 }
 
 function dispayWord(apiWord) {
