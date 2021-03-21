@@ -33,7 +33,10 @@ const endScreen = document.getElementById("end-screen");
 const finalScrArea = document.getElementById("final-score");
 const initialsBtn = document.getElementById("submit");
 
-let timer = 30;
+questionScreen.hidden = true;
+endScreen.hidden = true
+
+let timer = 10;
 const questions = [
   {
     title: "Commonly used data types DO NOT include:",
@@ -70,31 +73,42 @@ const questions = [
 ];
 let initials;
 let score;
+var timeTicking;
 
 displayQuizOver = () => {
-    alert("displayQuizOver")
-}
+  console.log("displayQuizOver");
+};
 
 checkAnswer = () => {
-    alert("checkAnswer")
-}
+  console.log("checkAnswer");
+};
 
 displayQuestion = () => {
-    alert("displayQuestion")
-    checkAnswer()
-    displayQuizOver();
-}
+  console.log("displayQuestion");
+  checkAnswer();
+  displayQuizOver();
+};
 
 startTimer = () => {
-    alert("startTimer")
-}
+  console.log("startTimer");
+  startScreen.hidden = true;
+  questionScreen.hidden = false;
+  const timeTicker = setInterval(() => {
+    timer--;
+    console.log(timer);
+    timerEl.textContent = timer;
+    if (timer <= 0) {
+      clearInterval(timeTicker);
+      questionScreen.hidden = true;
+      endScreen.hidden = false;
+    }
+  }, 1000);
+};
 
 start = () => {
-    alert("start")
-    startTimer()
-    displayQuestion()
-}
+  console.log("start");
+  startTimer();
+  displayQuestion();
+};
 
 startBtn.onclick = start;
-
-
