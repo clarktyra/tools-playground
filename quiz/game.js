@@ -39,7 +39,7 @@ const choiceButtons = document.getElementsByClassName('buttons')
 questionScreen.hidden = true;
 endScreen.hidden = true
 
-let timer = 10;
+let timer = 20;
 const questions = [
   {
     title: "Commonly used data types DO NOT include:",
@@ -78,17 +78,37 @@ let initials;
 let score;
 var timeTicking;
 let questionIndex = 0
+let timeTicker
 
 displayQuizOver = () => {
   console.log("displayQuizOver");
+  questionScreen.hidden = true;
+  clearInterval(timeTicker);
+  if (timer > 0){
+    finalScrArea.textContent = timer
+  } else {
+    timer = 0
+    finalScrArea.textContent = timer
+
+  }
+  endScreen.hidden = false
 };
 
 checkAnswer = (event) => {
     event.preventDefault()
   console.log("checkAnswer");
   console.log(event.target)
+  console.log("index: ", )
+  if(event.target.textContent != questions[questionIndex].answer){
+    timer -= 5
+  }
   questionIndex++;
-  displayQuestion(questionIndex)
+  if (questionIndex < questions.length){
+    displayQuestion(questionIndex)
+  } else {
+    displayQuizOver()
+  }
+  
 };
 
 displayQuestion = (questionIndex) => {
@@ -110,14 +130,19 @@ startTimer = () => {
   console.log("startTimer");
   startScreen.hidden = true;
   questionScreen.hidden = false;
-  const timeTicker = setInterval(() => {
+    timeTicker = setInterval(() => {
     timer--;
     console.log(timer);
-    timerEl.textContent = timer;
-    if (timer <= 0) {
-      clearInterval(timeTicker);
-      questionScreen.hidden = true;
-      endScreen.hidden = false;
+    if (timer >= 0){
+        timerEl.textContent = timer;
+    }
+    if (timer < 0) {
+        timerEl.textContent = 0;
+
+    //   clearInterval(timeTicker);
+    //   questionScreen.hidden = true;
+    //   endScreen.hidden = false;
+    displayQuizOver()
     }
   }, 1000);
 };
