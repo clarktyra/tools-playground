@@ -27,11 +27,14 @@ const timerEl = document.getElementById("time");
 const startBtn = document.getElementById("start");
 const startScreen = document.getElementById("start-screen");
 const questionScreen = document.getElementById("questions");
-const questionTitleEl = document.getElementById("questions-title");
+const questionTitleEl = document.getElementById("question-title");
 const choicesEl = document.getElementById("choices");
 const endScreen = document.getElementById("end-screen");
 const finalScrArea = document.getElementById("final-score");
 const initialsBtn = document.getElementById("submit");
+// var imageContainer = document.querySelector(".img-container");
+const choiceButtons = document.getElementsByClassName('buttons')
+
 
 questionScreen.hidden = true;
 endScreen.hidden = true
@@ -74,19 +77,33 @@ const questions = [
 let initials;
 let score;
 var timeTicking;
+let questionIndex = 0
 
 displayQuizOver = () => {
   console.log("displayQuizOver");
 };
 
-checkAnswer = () => {
+checkAnswer = (event) => {
+    event.preventDefault()
   console.log("checkAnswer");
+  console.log(event.target)
+  questionIndex++;
+  displayQuestion(questionIndex)
 };
 
-displayQuestion = () => {
+displayQuestion = (questionIndex) => {
   console.log("displayQuestion");
-  checkAnswer();
-  displayQuizOver();
+  choicesEl.innerHTML = ""
+  questionTitleEl.textContent = questions[questionIndex].title
+  for (let i = 0; i < 4 ; i++){
+    let button = document.createElement("button")
+    button.textContent = questions[questionIndex].choices[i]
+    button.setAttribute("class", "buttons")
+    button.onclick = checkAnswer
+    choicesEl.append(button)
+  }
+//   checkAnswer();
+//   displayQuizOver();
 };
 
 startTimer = () => {
@@ -108,7 +125,8 @@ startTimer = () => {
 start = () => {
   console.log("start");
   startTimer();
-  displayQuestion();
+  displayQuestion(questionIndex);
 };
 
 startBtn.onclick = start;
+// choiceButtons.onclick = checkAnswer
