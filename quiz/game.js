@@ -88,11 +88,9 @@ checkAnswer = (event) => {
     timer -= 5;
   }
   questionIndex++;
-  if (questionIndex < questions.length) {
-    displayQuestion(questionIndex);
-  } else {
-    displayQuizOver();
-  }
+  questionIndex < questions.length
+    ? displayQuestion(questionIndex)
+    : displayQuizOver();
 };
 
 displayQuestion = (questionIndex) => {
@@ -112,7 +110,6 @@ startTimer = () => {
   questionScreen.hidden = false;
   timeTicker = setInterval(() => {
     timer--;
-    console.log(timer);
     if (timer >= 0) {
       timerEl.textContent = timer;
     }
