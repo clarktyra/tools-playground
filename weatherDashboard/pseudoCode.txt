@@ -1,0 +1,19 @@
+click for search-button, grabs info from search--value
+    citySearch()
+        storeCityInHistory()
+            -setLocalStorage city
+            -diplayCityHistory()
+        diplayTodayWeather()
+            -fetch oneDaydata from openweatheAPI
+            -use info
+                -build card with data
+                -append card to #today
+        display5DayForecast()
+            -fetch fiveDaydata from openweatheAPI
+            -loop through info
+                -build cards with data
+                -append cards to #forecast
+
+diplayCityHistory()
+    -getLocalStorage
+    -loop and diplay inside #history
