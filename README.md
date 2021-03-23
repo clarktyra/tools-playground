@@ -24,6 +24,7 @@
 [Lets go to Code Quiz](https://clarktyra.github.io/tools-playground/quiz/index.html)
 
 ### Day Scheduler
+[Lets go to Day Scheduler](https://clarktyra.github.io/tools-playground/workdayScheduler/index.html)
 
 ### Weather Dashboard
 
