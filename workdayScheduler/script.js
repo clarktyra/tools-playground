@@ -43,16 +43,24 @@ $(".time-block").each( function() {
     timestuff = Math.abs(timestuff.substring(timestuff.length - 2))
     console.log("timestuff: ", timestuff)
 
-    if(hour > timestuff){
-        $(this).addClass("past")
-    }
-    if(hour === timestuff){
-        $(this).addClass("present")
-    }
-    if(hour < timestuff){
-        $(this).addClass("future")
-    }
+    if(hour > timestuff) {$(this).addClass("past")}
+    if(hour === timestuff){ $(this).addClass("present")}
+    if(hour < timestuff){$(this).addClass("future")}
 })
+
+
+$("button").on("click", function(){
+    var buttonNum = $(this).parent().attr("id")
+    buttonNum = Math.abs(buttonNum.substring(buttonNum.length - 2))
+    console.log("buttonNum: ", buttonNum)
+    var buttonTxt = $(this).siblings(".description").val()
+    console.log("buttonTxt: ", buttonTxt)
+    localStorage.setItem(buttonNum, buttonTxt)
+})
+for(let i = 9; i<=17; i++ ){
+    $("#hour-" + i).children(".description").val(localStorage.getItem(""+i))
+
+}
 
 
 })
