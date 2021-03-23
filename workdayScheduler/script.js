@@ -33,15 +33,25 @@ var date = moment().format('LL');
 console.log("date: ", date)
 currentDay.text(date);
 
-var time = parseInt(moment().startOf('day').fromNow().substring(0,2));
-console.log("time: ", time)
+var hour = moment().hours()
+console.log("hour: ", hour)
 
 //loop through time-block
-const timeBlock = 
+
 $(".time-block").each( function() {
     var timestuff = ($(this).attr("id"))
     timestuff = Math.abs(timestuff.substring(timestuff.length - 2))
     console.log("timestuff: ", timestuff)
+
+    if(hour > timestuff){
+        $(this).addClass("past")
+    }
+    if(hour === timestuff){
+        $(this).addClass("present")
+    }
+    if(hour < timestuff){
+        $(this).addClass("future")
+    }
 })
 
 
