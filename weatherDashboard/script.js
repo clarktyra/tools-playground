@@ -1,23 +1,35 @@
-// search for a city
-//     city is added to the search history
-//         click on a city in the search history
-//             I am again presented with current and future conditions for that city
-//     presented with current   
-//         city name 
-//         the date
-//         an icon representation of weather conditions 
-//         the temperature 
-//         the humidity
-//         the wind speed
-//         the UV index
-//             presented with a color that indicates whether the conditions are favorable, moderate, or severe
-//     future 5-day forecast conditions for that city
-//         the date
-//         an icon representation of weather conditions
-//         the temperature
-//         and the humidity
+window.addEventListener('load', function () {
+    var apiKey = "003a54ddfe39c875d00206109efba335"
+    //set up the dom elements
+    const searchButtonEl = document.getElementById("search-button")
+    const searchValueEl = document.querySelector("#search-value")
+    const historyEl = document.querySelector("#history")
+    const todayEl = document.querySelector("#today")
+    const forecastEl = document.querySelector("#forecast")
 
-//Pseudo Code
+    searchButtonEl.addEventListener('click', function(){
+        alert("searchButton clicked");
+        storeCityHistory();
+        diplayTodayWeather();
+        diplay5DayForcast()
+    })
+
+    function storeCityHistory(){
+        alert("storeCityHistory runs")
+        diplayCityHistory()
+    }
+
+    function diplayCityHistory(){
+        alert("diplayCityHistory runs")
+    }
+
+    function diplayTodayWeather(){
+        alert("diplayTodayWeather runs")
+    }
+
+    function diplay5DayForcast(){
+        alert("diplayTodayWeather runs")
+    }
 
 
-var apiKey = "003a54ddfe39c875d00206109efba335"
+})

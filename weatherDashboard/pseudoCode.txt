@@ -17,3 +17,14 @@ click for search-button, grabs info from search--value
 diplayCityHistory()
     -getLocalStorage
     -loop and diplay inside #history
+
+FUNCTIONS
+citySearch()
+storeCityInHistory()
+diplayCityHistory()
+diplayTodayWeather()
+display5DayForecast()
+
+VARIABLES
+city, card
+
