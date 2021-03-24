@@ -56,7 +56,7 @@ window.addEventListener("load", function () {
     cityName = searchValueEl.value;
     storeCityHistory(cityName);
     diplayTodayWeather(cityName);
-    diplay5DayForcast(fiveDayForecast);
+    diplay5DayForcast(cityName);
   });
 
   function storeCityHistory(cN) {
@@ -78,6 +78,7 @@ window.addEventListener("load", function () {
   }
 
   function diplayTodayWeather(cN) {
+    todayEl.innerHTML = ''
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cN}&appid=${apiKey}`
     )
@@ -113,16 +114,34 @@ window.addEventListener("load", function () {
       });
   }
 
-  function diplay5DayForcast(fiveDF) {
-    console.log("fiveDF: ", fiveDF);
-    for (let piece of fiveDF) {
-      var oneFifthCard = document.createElement("div");
-      for (let key in piece) {
-        var oneDayP = document.createElement("p");
-        oneDayP.innerHTML = piece[key];
-        oneFifthCard.append(oneDayP);
-      }
-      forecastEl.append(oneFifthCard);
-    }
+  function diplay5DayForcast(cN) {
+    forecastEl.innerHTML = '';
+      var fiveDF = fiveDayForecast
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cN}&appid=${apiKey}`)
+        .then((res) => res.json())
+        .then((data) => {
+            
+            console.log("fiveData : ", data)
+            for (let i=0; i <40; i+=8) {
+                console.log("data.list[i] : ", data.list[i])
+                var myObj = {
+                    date: data.list[i].dt_txt,
+                    icon: data.list[i].weather[0].icon,
+                temperature: data.list[i].main.temp,
+                    humidity: data.list[i].main.humidity,
+                }
+                
+
+                var oneFifthCard = document.createElement("div");
+                for (let key in myObj) {
+                  var oneDayP = document.createElement("p");
+                  oneDayP.innerHTML = myObj[key];
+                  oneFifthCard.append(oneDayP);
+                }
+                forecastEl.append(oneFifthCard);
+              }
+            
+        })
+    
   }
 });
