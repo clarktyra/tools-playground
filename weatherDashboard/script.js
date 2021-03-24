@@ -6,6 +6,9 @@ window.addEventListener("load", function () {
   const historyEl = document.querySelector("#history");
   const todayEl = document.querySelector("#today");
   const forecastEl = document.querySelector("#forecast");
+//   const cityClickedEl = document.getElementsByClassName("cityClicked");
+
+  
 
   var cityName = "Dallas";
   var citOneDayforecast = {
@@ -59,6 +62,8 @@ window.addEventListener("load", function () {
     diplay5DayForcast(cityName);
   });
 
+  
+
   function storeCityHistory(cN) {
     console.log("cN: ", cN);
     cities.push(cN);
@@ -73,12 +78,18 @@ window.addEventListener("load", function () {
     for (let piece of myCityList) {
       var oneCity = document.createElement("p");
       oneCity.innerHTML = piece;
+      oneCity.addEventListener("click", function(event){
+        event.preventDefault()
+        console.log(event.target.textContent)
+        diplayTodayWeather(event.target.textContent);
+        diplay5DayForcast(event.target.textContent)
+      })
       historyEl.append(oneCity);
     }
   }
 
   function diplayTodayWeather(cN) {
-    todayEl.innerHTML = ''
+    todayEl.innerHTML = "";
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cN}&appid=${apiKey}`
     )
@@ -105,9 +116,19 @@ window.addEventListener("load", function () {
             console.log("cN: ", c1DF);
             var oneDayCard = document.createElement("div");
             for (let piece in c1DF) {
-              var oneDayP = document.createElement("p");
-              oneDayP.innerHTML = c1DF[piece];
-              oneDayCard.append(oneDayP);
+                if (piece === "icon") {
+                    var oneImage = document.createElement("img");
+                    oneImage.setAttribute(
+                      "src",
+                      `http://openweathermap.org/img/w/${c1DF.icon}.png`
+                    );
+                    oneDayCard.append(oneImage);
+                  } else {
+                    var oneDayP = document.createElement("p");
+                    oneDayP.innerHTML = c1DF[piece];
+                    oneDayCard.append(oneDayP);
+                  }
+              
             }
             todayEl.append(oneDayCard);
           });
@@ -115,33 +136,40 @@ window.addEventListener("load", function () {
   }
 
   function diplay5DayForcast(cN) {
-    forecastEl.innerHTML = '';
-      var fiveDF = fiveDayForecast
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cN}&appid=${apiKey}`)
-        .then((res) => res.json())
-        .then((data) => {
-            
-            console.log("fiveData : ", data)
-            for (let i=0; i <40; i+=8) {
-                console.log("data.list[i] : ", data.list[i])
-                var myObj = {
-                    date: data.list[i].dt_txt,
-                    icon: data.list[i].weather[0].icon,
-                temperature: data.list[i].main.temp,
-                    humidity: data.list[i].main.humidity,
-                }
-                
+    forecastEl.innerHTML = "";
+    var fiveDF = fiveDayForecast;
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${cN}&appid=${apiKey}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("fiveData : ", data);
+        for (let i = 0; i < 40; i += 8) {
+          console.log("data.list[i] : ", data.list[i]);
+          var myObj = {
+            date: data.list[i].dt_txt,
+            icon: data.list[i].weather[0].icon,
+            temperature: data.list[i].main.temp,
+            humidity: data.list[i].main.humidity,
+          };
 
-                var oneFifthCard = document.createElement("div");
-                for (let key in myObj) {
-                  var oneDayP = document.createElement("p");
-                  oneDayP.innerHTML = myObj[key];
-                  oneFifthCard.append(oneDayP);
-                }
-                forecastEl.append(oneFifthCard);
-              }
-            
-        })
-    
+          var oneFifthCard = document.createElement("div");
+          for (let key in myObj) {
+            if (key === "icon") {
+              var oneImage = document.createElement("img");
+              oneImage.setAttribute(
+                "src",
+                `http://openweathermap.org/img/w/${myObj.icon}.png`
+              );
+              oneFifthCard.append(oneImage);
+            } else {
+              var oneDayP = document.createElement("p");
+              oneDayP.innerHTML = myObj[key];
+              oneFifthCard.append(oneDayP);
+            }
+          }
+          forecastEl.append(oneFifthCard);
+        }
+      });
   }
 });
