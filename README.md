@@ -28,6 +28,7 @@
 
 ### Weather Dashboard
 
+[Lets go to Day Scheduler](https://clarktyra.github.io/tools-playground/weatherDashboard/index.html)
 
 
 

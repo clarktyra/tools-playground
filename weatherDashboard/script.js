@@ -14,13 +14,13 @@ window.addEventListener("load", function () {
     diplay5DayForcast(cityName);
   })
 
-  function storeCityHistory(cN) {
+  storeCityHistory = (cN) => {
     cities.push(cN);
     localStorage.setItem("cities", JSON.stringify(cities));
     diplayCityHistory();
   }
 
-  function diplayCityHistory() {
+  diplayCityHistory = () => {
     historyEl.innerHTML = "";
     let myCityList = JSON.parse(localStorage.getItem("cities"));
     myCityList.reverse();
@@ -36,7 +36,7 @@ window.addEventListener("load", function () {
     }
   }
 
-  function diplayTodayWeather(cN) {
+  diplayTodayWeather = (cN) => {
     todayEl.innerHTML = "";
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cN}&appid=${apiKey}`
@@ -80,7 +80,7 @@ window.addEventListener("load", function () {
       });
   }
 
-  function diplay5DayForcast(cN) {
+  diplay5DayForcast = (cN) => {
     forecastEl.innerHTML = "";
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${cN}&appid=${apiKey}`
@@ -94,7 +94,6 @@ window.addEventListener("load", function () {
             temperature: data.list[i].main.temp,
             humidity: data.list[i].main.humidity,
           };
-
           const oneFifthCard = document.createElement("div");
           for (let key in myObj) {
             if (key === "icon") {
