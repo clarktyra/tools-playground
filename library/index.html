@@ -1,39 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library of Congress Search</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/jass.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Library of Congress Search</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./assets/css/jass.css" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html"
+          >Javascript Tools Playground</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../passwordGenerator/index.html"
+                >Password</a
+              >
+            </li>
 
-<body>
-  <div class="flex-row align-center justify-center min-100-vh bg-primary">
-    <div class="col-12 col-md-9 flex-column align-center bg-light p-5">
-      <h1 class="text-primary">Library of Congress Search Engine</h1>
-      <form id="search-form" class="form w-100">
-        <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
-        <select id="format-input" class="form-input w-100">
-          <option value="" disabled selected>Select a format...</option>
-          <option value="maps">Maps</option>
-          <option value="audio">Audio</option>
-          <option value="photos">Photos</option>
-          <option value="manuscripts">Manuscripts</option>
-          <option value="newspapers">Newspapers</option>
-          <option value="film-and-videos">Film and Videos</option>
-          <option value="notated-music">Notated Music</option>
-          <option value="websites">Websites</option>
-        </select>
-        <button class="btn btn-info btn-block">Click Me</button>
-      </form>
+            <li class="nav-item">
+              <a class="nav-link" href="../rockPaperScissors/index.html">RPS</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="../wordGuessGame/index.html">Hangman</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../quiz/index.html">Quiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Scheduler</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../weatherDashboard/index.html"
+                >Weather
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../astro-weight/index.html"
+                >Astro-Weight-Calculator
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../change-calculator/index.html"
+                >Change-Calculator
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../library/index.html">Library </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../projectTracker/index.html"
+                >Project-Tracker
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="flex-row align-center justify-center min-100-vh bg-primary">
+      <div class="col-12 col-md-9 flex-column align-center bg-light p-5">
+        <h1 class="text-primary">Library of Congress Search Engine</h1>
+        <form id="search-form" class="form w-100">
+          <input
+            id="search-input"
+            class="form-input w-100"
+            type="text"
+            placeholder="Search!"
+          />
+          <select id="format-input" class="form-input w-100">
+            <option value="" disabled selected>Select a format...</option>
+            <option value="maps">Maps</option>
+            <option value="audio">Audio</option>
+            <option value="photos">Photos</option>
+            <option value="manuscripts">Manuscripts</option>
+            <option value="newspapers">Newspapers</option>
+            <option value="film-and-videos">Film and Videos</option>
+            <option value="notated-music">Notated Music</option>
+            <option value="websites">Websites</option>
+          </select>
+          <button class="btn btn-info btn-block">Click Me</button>
+        </form>
+      </div>
     </div>
-  </div>
-
-  <script src="./assets/js/script.js"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>

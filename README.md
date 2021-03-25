@@ -28,9 +28,23 @@
 
 ### Weather Dashboard
 
-[Lets go to Day Scheduler](https://clarktyra.github.io/tools-playground/weatherDashboard/index.html)
+[Lets go to Weather Dashboard](https://clarktyra.github.io/tools-playground/weatherDashboard/index.html)
 
+### Astro Weight Calculator
 
+[Lets go to Astro Weight Calculator](https://clarktyra.github.io/tools-playground/astro-weight/index.html)
+
+### Change Calculator
+
+[Lets go to Change Calculator](https://clarktyra.github.io/tools-playground/change-calculator/index.html)
+
+### Library
+
+[Lets go to Library](https://clarktyra.github.io/tools-playground/library/index.html)
+
+### Project Tracker
+
+[Lets go to Library](https://clarktyra.github.io/tools-playground/projectTracker/index.html)
 
 
 
