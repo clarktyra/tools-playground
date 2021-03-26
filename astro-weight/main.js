@@ -1,4 +1,8 @@
-var planets = [
+const solarSystem = "https://i.pinimg.com/originals/f4/34/45/f4344541fcceb55e5d4453b08cd82178.jpg"
+document.body.style.backgroundImage = `url(${solarSystem})`;
+document.body.style.backgroundSize = "cover"
+
+const planets = [
   [
     "Pluto",
     0.06,
@@ -32,7 +36,7 @@ var planets = [
   [
     "Moon",
     0.1655,
-    "https://images.unsplash.com/photo-1532693322450-2cb5c511067d?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDM4ODV8MHwxfHNlYXJjaHwxMXx8TW9vbnxlbnwwfHx8fDE2MTY3MzkxNjU&ixlib=rb-1.2.1&q=85",
+    "https://scitechdaily.com/images/Lunar-Reconnaissance-Orbiter-Moon-scaled.jpg",
   ],
   [
     "Earth",
@@ -58,14 +62,14 @@ var planets = [
 
 planets.reverse()
 planets.forEach(function (planet) {
-  var element1 = document.createElement("option");
+  const element1 = document.createElement("option");
   element1.text = planet[0];
   element1.value = planet[0];
   document.getElementById("planets").append(element1);
 });
 
-function calculateWeight(weight, planetName) {
-  for (var i = 0; i < planets.length; i++) {
+calculateWeight = (weight, planetName) => {
+  for (let i = 0; i < planets.length; i++) {
     if (planets[i][0] == planetName) {
       var multiplier = planets[i][1];
     }
@@ -73,17 +77,21 @@ function calculateWeight(weight, planetName) {
   return multiplier * weight;
 }
 
-function handleClickEvent(e) {
+handleClickEvent = (e) => {
   e.preventDefault();
-  var userWeight = $("#user-weight").val();
-  var planetName = $("#planets").val();
-  var result = calculateWeight(userWeight, planetName);
+  const userWeight = $("#user-weight").val();
+  const planetName = $("#planets").val();
+  const result = calculateWeight(userWeight, planetName);
   $("#output").text(
     " If you were on " + planetName + ", you would weigh " + result + "lbs!"
   )
   for (let piece of planets) {
     if (planetName === piece[0]) {
-      $("#outputImage").attr("src", piece[2]);
+      // $("#outputImage").attr("src", piece[2]);
+      document.body.style.backgroundImage = `url('${piece[2]}')`;
+      document.body.style.backgroundSize = "cover"
+
+
     }
   }
 }
