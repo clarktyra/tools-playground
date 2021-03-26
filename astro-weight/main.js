@@ -46,7 +46,8 @@ function calculateWeight(weight, planetName) {
     return multiplier * weight;
   }
   
-  function handleClickEvent() {
+  function handleClickEvent(e) {
+    e.preventDefault()
     // 3. Create a variable called userWeight and assign the value of the user's weight.
   var userWeight = $("#user-weight").val();
     // 4. Create a variable called planetName and assign the name of the selected planet from the drop down.

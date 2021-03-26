@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Astro Weight Calculator</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -54,35 +54,72 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../astro-weight/index.html"  >Astro-Weight-Calculator </a>
+              <a class="nav-link" href="../astro-weight/index.html"
+                >Astro-Weight-Calculator
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../change-calculator/index.html"  >Change-Calculator </a>
+              <a class="nav-link" href="../change-calculator/index.html"
+                >Change-Calculator
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../library/index.html"  >Library </a>
+              <a class="nav-link" href="../library/index.html">Library </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../projectTracker/index.html"  >Project-Tracker </a>
+              <a class="nav-link" href="../projectTracker/index.html"
+                >Project-Tracker
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-     <!-- Write your markup here  -->
-     <input id="user-weight" placeholder="Weight (lbs)"></input>
+    <!-- Write your markup here  -->
+    <div class="container">
+      <br />
+      <br />
+      <br />
+      <form class="row justify-content-center g-3">
+        <div class="col-auto">
+          <!-- <label for="staticEmail2" class="visually-hidden">Email</label> -->
+          <input
+            id="user-weight"
+            type="text"
+            class="form-control"
+            placeholder="Weight (lbs)"
+          />
+        </div>
+        <div class="col-auto">
+          <!-- <label for="inputPassword2" class="visually-hidden">Password</label> -->
+          <!-- <input type="password" class="form-control" id="inputPassword2" placeholder="Password"> -->
+          <select class="form-select" id="planets">
+            select planet
+          </select>
+        </div>
+        <div class="col-auto">
+          <button
+            id="calculate-button"
+            type="submit"
+            class="btn btn-primary mb-3"
+          >
+            Calculate
+          </button>
+        </div>
+      </form>
+      <br>
+      <div class="row ">
+        <p class="h3 text-center" id="output"></p>
+      </div>
 
-     <select id="planets">select planet</select>
+    </div>
 
-     <p id="output"></p>
-
-     <button id="calculate-button" type="submit">Calculate</button>
-     <script
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src = "main.js" charset = "utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
   </body>
 </html>
