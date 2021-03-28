@@ -1,0 +1,13 @@
+body {
+    background: url("https://i.pinimg.com/originals/f4/34/45/f4344541fcceb55e5d4453b08cd82178.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#output{
+    background-color: #464646;
+    color:lightgreen
+}

@@ -1,6 +1,7 @@
-const solarSystem = "https://i.pinimg.com/originals/f4/34/45/f4344541fcceb55e5d4453b08cd82178.jpg"
-document.body.style.backgroundImage = `url(${solarSystem})`;
-document.body.style.backgroundSize = "cover"
+// const solarSystem = "https://i.pinimg.com/originals/f4/34/45/f4344541fcceb55e5d4453b08cd82178.jpg"
+// document.body.style.backgroundImage = `url(${solarSystem})`;
+// document.body.style.backgroundSize = "cover"
+// document.body.style.backgroundRepeat = "no-repeat"
 
 const planets = [
   [
@@ -89,7 +90,6 @@ handleClickEvent = (e) => {
     if (planetName === piece[0]) {
       // $("#outputImage").attr("src", piece[2]);
       document.body.style.backgroundImage = `url('${piece[2]}')`;
-      document.body.style.backgroundSize = "cover"
 
 
     }
