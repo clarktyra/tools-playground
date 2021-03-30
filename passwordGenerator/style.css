@@ -27,7 +27,7 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: #AA8B39;
+  color: #AB8E38;
 }
 h1 {
   font-size: 3.5rem;
@@ -35,7 +35,7 @@ h1 {
 }
 
 .card {
-  background-color: #AA8B39;
+  background-color: #AB8E38;
   border-radius: 25px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -79,7 +79,7 @@ h1 {
 
 .btn {
   border: none;
-  background-color: #3F3075;
+  background-color: #226865;
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
@@ -129,6 +129,13 @@ button[disabled] {
 
 }
 
+img {
+  filter: invert(54%) sepia(51%) saturate(480%) hue-rotate(7deg) brightness(93%) contrast(93%);  display: block;
+
+  margin: auto;
+
+}
+
 
 
 @media (max-width: 690px) {
@@ -146,5 +153,9 @@ button[disabled] {
 @media (max-width: 500px) {
   .btn {
     font-size: 0.8rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  
   }
 }
