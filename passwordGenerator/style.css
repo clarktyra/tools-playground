@@ -29,6 +29,10 @@ header {
   padding-top: 0px;
   color: #AA8B39;
 }
+h1 {
+  font-size: 3.5rem;
+
+}
 
 .card {
   background-color: #AA8B39;
