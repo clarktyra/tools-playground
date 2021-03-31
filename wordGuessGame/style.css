@@ -15,12 +15,14 @@ body {
 
 #startBtn {
     background-color: brown;
+    border-radius: 25px
+
 }
 
 #second-container {
     background-color: red;
-    padding-top: 2%;
-    /* padding-bottom: 10% */
+    padding-top: 5%;
+    padding-bottom: 10%
 }
 
 #wordArea {
@@ -30,13 +32,37 @@ body {
     padding-bottom: 5%;
     text-align: center;
     font-size: 70px;
+    background-color: orange;
+    border-radius: 25px
 }
 
 #gameContainer {
     font-size: large;
 }
 
-.second-container-text{
+.general-text{
 font-size: 30px;
+text-align: center;
+}
 
+.wrong-letters-area  {
+    background-color: aliceblue;
+    border-radius: 25px;
+    /* margin:auto */
+    padding: 0px 0px 0px 10px
+
+}
+.stats-area{
+    background-color: green;
+    border-radius: 25px;
+    /* margin:auto; */
+
+    margin: 0px 0px 10px 0px
+}
+
+@media (max-width: 500px) {
+    #wordArea {
+        font-size: 40px;
+
+    }
 }

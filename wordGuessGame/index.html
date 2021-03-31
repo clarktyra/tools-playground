@@ -80,48 +80,89 @@
     <div id="first-container" class="container">
       <div class="row">
         <h1 id="title">Hangman</h1>
+        <br>
         <div class="row justify-content-center">
           <div class="col text-center">
-            <button id="startBtn" type="button" class="btn ">start</button>
+            <button id="startBtn" type="button" class="btn">PLAY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="second-container" class="container general-text">
+      <div class="row justify-content-around">
+        <div class="col-12 col-md-3 wrong-letters-area">
+          <div class="row">
+            <div class="text-center ">
+              Wrong letters guessed
+            </div>
+          </div>
+          <div class="row" >
+            <div class="text-center" id="wrong-words">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="row">
+            <div class="col-md-4 ">
+              <div class="text-center stats-area">
+              Time Remaining:
+              <span class="timer"></span>
+            </div>
+            </div>
+            <div class="col-md-4 ">
+              <div class="text-center stats-area">
+              wins: <span id="wins"></span>
+            </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center stats-area">
+                losses:<span id="losses"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div id="wordArea"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="gameContainer row"></div>
-
-      
-      
-    </div>
-    <div id="second-container" class="container">
-      <div class="scorecard row">
-        <div class="col text-center second-container-text">
-          Time Remaining:
-          <span class="timer"></span>
+      <!-- <div class="scorecard row">
+        <div col="col-4">
+          
+            Wrong letters guessed<span id="wrong-words"></span>
+          
         </div>
-        <h3 class="col text-center second-container-text">wins: <span id="wins"></span></h3>
-        <h3 class="col text-center second-container-text">losses:<span id="losses"></span></h3>
+        
+        <div col="col-8">
+          
+            <div class="col text-center second-container-text">
+              Time Remaining:
+              <span class="timer"></span>
+            </div>
+            <h3 class="col text-center second-container-text">
+              wins: <span id="wins"></span>
+            </h3>
+            <h3 class="col text-center second-container-text">
+              losses:<span id="losses"></span>
+            </h3>
+          
+        </div>
       </div>
-     
-      
+
       <div class="row">
         <div class="col-4 text-center second-container-text">
           <div class="row">
             Wrong letters guessed<span id="wrong-words"></span>
           </div>
-          <div class="row">
-            
-          </div>
-          
+          <div class="row"></div>
         </div>
-        <div class="col-8 align-self-end" id="wordArea">
-          
-        </div>
-        
-      </div>
+        <div class="col-8 align-self-end" id="wordArea"></div>
+      </div> -->
     </div>
-    <div class="conainer">]
-
-    </div>
+    <div class="conainer">]</div>
     <script src="./logic.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
