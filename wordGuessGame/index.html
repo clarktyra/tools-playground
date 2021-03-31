@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Password</a>
+              <a class="nav-link" href="../passwordGenerator/index.html">Password</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../rockPaperScissors/index.html">RPS</a>
@@ -79,20 +79,23 @@
 
     <div id="first-container" class="container">
       <div class="row">
-        <h1 id="title">Hangman</h1>
+        <h1 id="title">Hangman
+            <img height="100px"src="hangman.png">
+          </div>
+        </h1>
         <br>
         <div class="row justify-content-center">
           <div class="col text-center">
-            <button id="startBtn" type="button" class="btn">PLAY</button>
+            <button id="startBtn" type="button" class="btn general-text">PLAY</button>
           </div>
         </div>
       </div>
     </div>
     <div id="second-container" class="container general-text">
       <div class="row justify-content-around">
-        <div class="col-12 col-md-3 wrong-letters-area">
+        <div class="col-8 col-md-3 wrong-letters-area">
           <div class="row">
-            <div class="text-center ">
+            <div class="text-center">
               Wrong letters guessed
             </div>
           </div>
@@ -162,7 +165,6 @@
         <div class="col-8 align-self-end" id="wordArea"></div>
       </div> -->
     </div>
-    <div class="conainer">]</div>
     <script src="./logic.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
