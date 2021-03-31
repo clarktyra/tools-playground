@@ -24,5 +24,19 @@ body {
 }
 
 #wordArea {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
     text-align: center;
+    font-size: 70px;
+}
+
+#gameContainer {
+    font-size: large;
+}
+
+.second-container-text{
+font-size: 30px;
+
 }

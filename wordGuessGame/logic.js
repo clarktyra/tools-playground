@@ -3,6 +3,7 @@ const timerEl   = document.querySelector(".timer")
 const winsEl    = document.querySelector("#wins")
 const lossesEl  = document.querySelector("#losses")
 const wordEl    = document.querySelector("#wordArea")
+const wrongEl    = document.querySelector("#wrong-words")
 let word
 let listOfSelected  = []
 let wordArray       = []
@@ -10,6 +11,7 @@ let wins            = localStorage.getItem('wins')   || 0
 let losses          = localStorage.getItem('losses') || 0
 winsEl.textContent  = wins
 lossesEl.textContent= losses
+let lisfOfWrongLetters = [];
 
 buttonEl.addEventListener("click",  (event) => {
     event.preventDefault()
@@ -20,15 +22,28 @@ document.addEventListener("keydown", (event) => {
   event.preventDefault()
   const keyPressed = event.key.toLowerCase()
   listOfSelected.push(keyPressed)
+  // lisfOfWrongLetters.push(keyPressed)
   dispayWord(word)
 });
 
 dispayWord = (apiWord) => {
   wordArray = []
+  lisfOfWrongLetters = []
+  
     for (var i = 0; i < apiWord.length; i++) {
         listOfSelected.includes(apiWord[i]) ? wordArray.push(apiWord[i]) : wordArray.push("_")
     }
     wordEl.textContent = wordArray.join(" ")
+
+    for(let char1 of listOfSelected){
+      if (!(wordArray.includes(char1))){
+        lisfOfWrongLetters.push(char1)
+      }
+    }
+    lisfOfWrongLetters = [...new Set(lisfOfWrongLetters)]
+  wrongEl.textContent = lisfOfWrongLetters.join(" ")
+
+
 }
 
 countdownTimer = () => {

@@ -76,6 +76,7 @@
         </div>
       </div>
     </nav>
+
     <div id="first-container" class="container">
       <div class="row">
         <h1 id="title">Hangman</h1>
@@ -93,20 +94,33 @@
     </div>
     <div id="second-container" class="container">
       <div class="scorecard row">
-        <div class="col text-center">
+        <div class="col text-center second-container-text">
           Time Remaining:
           <span class="timer"></span>
         </div>
-        <h3 class="col text-center">wins: <span id="wins"></span></h3>
-        <h3 class="col text-center">losses:<span id="losses"></span></h3>
+        <h3 class="col text-center second-container-text">wins: <span id="wins"></span></h3>
+        <h3 class="col text-center second-container-text">losses:<span id="losses"></span></h3>
       </div>
+     
       
       <div class="row">
-        <div class="col align-self-end" id="wordArea">
+        <div class="col-4 text-center second-container-text">
+          <div class="row">
+            Wrong letters guessed<span id="wrong-words"></span>
+          </div>
+          <div class="row">
+            
+          </div>
+          
+        </div>
+        <div class="col-8 align-self-end" id="wordArea">
           
         </div>
         
       </div>
+    </div>
+    <div class="conainer">]
+
     </div>
     <script src="./logic.js"></script>
     <script
