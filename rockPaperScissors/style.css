@@ -1,0 +1,41 @@
+body {
+    background-color: powderblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.container {
+    margin: auto;
+    /* width: 50%; */
+    padding: 10px;
+    align-content: center;
+    text-align: center
+}
+
+
+
+h1 {
+    align-content: center;
+    text-align: center
+}
+.choiceArea {
+    margin: 0 auto;
+    text-align: center;
+}
+
+img:hover{
+    border-color: yellow;
+    border-style: solid;
+}
+
+
+
+  img {
+    width: 150px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    img {
+      width: 70px;
+    }
+  }

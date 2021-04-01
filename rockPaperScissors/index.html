@@ -10,6 +10,7 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
@@ -77,8 +78,59 @@
         </div>
       </div>
     </nav>
-    <h1>Thanks for playing!</h1>
-    <script src="./script.js"></script>
+    <div class="container">
+      <div class="row">
+        <div class="container1">
+          <h1>Rock Paper Scisors</h1>
+          <h4>Click your choice to play</h4>
+          <h5>Wins: <span id="wins"></span></h5>
+          <h5>Win Percentage: <span id="winPercentage"></span></h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div>
+              <img
+                id="rock"
+                src="./5a35c7b6db90f5.0034759615134739748994.png"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <img
+                id="paper"
+                src="./kisspng-post-it-note-paper-clip-art-post-it-note-png-5ab44be02d5f60.7688322515217653441859.png"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <img
+                id="scissors"
+                src="./kisspng-scissors-clip-art-scissors-5a80f8a6d8be97.1303518815184017028878.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div id="computerArea">
+            <h4>The computer chose</h4>
+            <p id="choiceArea"></p>
+            <img id="comImage" />
+          </div>
+        </div>
+      </div>
+
+      <div class="choiceArea">
+        <div id="winnerArea"></div>
+      </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./script2.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
