@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Breakout</title>
+    <style>
+        body {
+            background-color: powderblue;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        canvas {
+            background-color: beige
+        }
+
+        .container1 {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            align-content: center;
+            text-align: center
+        }
+
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+
+        i {
+            color: darkred
+        }
+
+        h1 {
+            align-content: center;
+            text-align: center
+        }
+        .gameArea {
+            margin: 0 auto;
+            text-align: center;
+        }
+        canvas {
+            display:inline-block;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="snake.html">Snake</a></li>
+                        <li><a href="breakout.html">Breakout</a></li>
+                        <li><a href="cupcake.html">Catcher</a></li>
+                        <li><a href="rockpaperscisors.html">RockPaperScisors</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class=container1>
+        <h1>Breakout</h1>
+        <h4>Controls: Left and Right Arrow Keys </h4>
+    </div>
+    <div class="gameArea">
+            <canvas width="500" height="500" style="border: 5px solid #000000" id="ctx"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById("ctx").getContext('2d');
+        var WIDTH = 500;
+        var HEIGHT = 500;
+        var numOfTiles, tileList, score, intervalVar, hitCount, running = false;
+        ctx.font = "20px Calibri";
+        ctx.fillText("Click me to start the game", 140, 250)
+
+        var ball = {
+            x: 0,
+            y: 0,
+            radius: 5,
+            color: "black",
+            spdX: -5,
+            spdY: -5
+        }
+
+        var base = {
+            x: 0,
+            y: 400,
+            height: 20,
+            width: 100,
+            color: "darkgrey",
+            pressingLeft: false,
+            pressingRight: false,
+            lives: 3
+        }
+
+        var tile = {
+            height: 20,
+            width: 40,
+            color: 'darkred'
+        }
+
+        document.getElementById('ctx').onmousedown = function (event) {
+            if (running) {
+                running = false;
+                clearInterval(intervalVar)
+            }
+            startGame()
+        }
+
+        document.onkeydown = function (event) {
+            if (event.keyCode == 37) {
+                base.pressingLeft = true;
+                base.pressingRight = false;
+            } else if (event.keyCode == 39) {
+                base.pressingLeft = false;
+                base.pressingRight = true
+            }
+        }
+
+        document.onkeyup = function (event) {
+            if (event.keyCode == 37) {
+                base.pressingLeft = false
+            } else if (event.keyCode == 39) {
+                base.pressingRight = false
+            }
+        }
+
+        testCollion = function (base, ball) {
+            return ((base.x < ball.x + 2 * ball.radius) &&
+                (ball.x < base.x + base.width) &&
+                (base.y < ball.y + 2 * ball.radius) &&
+                (ball.y < base.y + base.height)
+            );
+        }
+
+        testCollisionTile = function (t, ball) {
+            return ((t.x < ball.x + 2 * ball.radius) &&
+                (ball.x < t.x + tile.width) &&
+                (t.y < ball.y + 2 * ball.radius) &&
+                (ball.y < t.y + tile.height)
+            );
+        }
+
+        drawBall = function () {
+            ctx.save();
+            ctx.fillStyle = ball.color;
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        drawBase = function () {
+            ctx.save();
+            ctx.fillStyle = base.color;
+            ctx.fillRect(base.x, base.y, base.width, base.height)
+            ctx.restore();
+        }
+
+        drawTiles = function (t, i) {
+            ctx.save();
+            ctx.fillStyle = tile.color;
+            ctx.fillRect(t.x, t.y, tile.width, tile.height)
+            ctx.restore();
+        }
+
+        updateBasePostion = function () {
+            if (base.pressingLeft) {
+                base.x = base.x - 5
+            }
+            else if (base.pressingRight) {
+                base.x = base.x + 5
+            }
+            if (base.x < 0) {
+                base.x = 0
+            }
+            if (base.x > WIDTH - base.width) {
+                base.x = WIDTH - base.width
+            }
+        }
+
+        updateBallPostion = function () {
+            ball.x += ball.spdX;
+            ball.y += ball.spdY;
+            if (ball.x > WIDTH || ball.x < 0) {
+                hitCount++;
+                if(hitCount %10 == 0){
+                    if(ball.spdX < 0){
+                        ball.spdX = -(Math.abs(ball.spdX)+1)
+                    } else 
+                        ball.spdX += 1
+                }
+                ball.spdX = -ball.spdX
+            }
+            if (ball.y < 0) {
+                hitCount++;
+                if(hitCount %10 == 0){
+                    if(ball.spdY < 0){
+                        ball.spdY = -(Math.abs(ball.spdY)+1)
+                    } else 
+                        ball.spdY += 1
+                }
+                ball.spdY = -ball.spdY
+            }
+            if (ball.y > HEIGHT) {
+                hitCount++;
+                if(hitCount %10 == 0){
+                    if(ball.spdY < 0){
+                        ball.spdY = -(Math.abs(ball.spdY)+1)
+                    } else 
+                        ball.spdY += 1
+                }
+                ball.spdY = -ball.spdY
+                base.lives -= 1;
+            }
+            // if(ball.y == base.y && (ball.x > base.x && ball.x < base.x+base.width)){
+            //     ball.spdY = -ball.spdY
+            // }
+        }
+
+        isGameOver = function () {
+            if (base.lives < 0 || score == 330) {
+                clearInterval(intervalVar);
+                ctx.fillText('Game Over! Click to restart', 150, 250)
+                return
+            }
+        }
+
+        update = function () {
+            ctx.clearRect(0, 0, WIDTH, HEIGHT)
+            drawBall();
+            drawBase();
+            tileList.forEach(drawTiles);
+            if (testCollion(base, ball)) {
+                ball.spdY = -ball.spdY
+            }
+
+            for (key in tileList) {
+                if (testCollisionTile(tileList[key], ball)) {
+                    delete tileList[key];
+                    ball.spdY = -ball.spdY;
+                    score += 5;
+                }
+            }
+
+            ctx.fillText("Score: " + score, 5, 490)
+            ctx.fillText("Lives: " + base.lives, 430, 490)
+            isGameOver();
+            updateBasePostion();
+            updateBallPostion();
+        }
+
+        startGame = function () {
+            base.x = 150;
+            ball.x = base.x + 100;
+            ball.y = base.y - 100;
+            numOfTiles = 0;
+            var tileX = 5;
+            var tileY = 5;
+            tileList = [];
+            score = 0
+            base.lives = 3;
+            hitCount = 0;
+            running = true;
+            for (var i = 1; i <= 6; i++) {
+                tileX = 5;
+                for (var j = 1; j <= 11; j++) {
+                    tileList[numOfTiles] = { x: tileX, y: tileY }
+                    numOfTiles++;
+                    tileX += 45;
+                }
+                tileY += 25;
+            }
+            intervalVar = setInterval(update, 20);
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
