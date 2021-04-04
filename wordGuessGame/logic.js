@@ -4,6 +4,9 @@ const winsEl    = document.querySelector("#wins")
 const lossesEl  = document.querySelector("#losses")
 const wordEl    = document.querySelector("#wordArea")
 const wrongEl    = document.querySelector("#wrong-words")
+const guessesLeftEl    = document.querySelector(".guessesRemaining")
+const lettersElement = document.querySelector("#letters")
+
 let word
 let listOfSelected  = []
 let wordArray       = []
@@ -12,6 +15,13 @@ let losses          = localStorage.getItem('losses') || 0
 winsEl.textContent  = wins
 lossesEl.textContent= losses
 let lisfOfWrongLetters = [];
+let guessesLEft = 10;
+let alphabet = [
+  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+]
+
+
+
 
 buttonEl.addEventListener("click",  (event) => {
     event.preventDefault()
@@ -38,11 +48,12 @@ dispayWord = (apiWord) => {
     for(let char1 of listOfSelected){
       if (!(wordArray.includes(char1))){
         lisfOfWrongLetters.push(char1)
+        
       }
     }
     lisfOfWrongLetters = [...new Set(lisfOfWrongLetters)]
   wrongEl.textContent = lisfOfWrongLetters.join(" ")
-
+  guessesLeftEl.textContent = guessesLEft - lisfOfWrongLetters.length
 
 }
 

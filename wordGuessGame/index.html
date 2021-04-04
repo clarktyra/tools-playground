@@ -110,33 +110,51 @@
         <div class="col-8 col-md-3 wrong-letters-area">
           <div class="row">
             <div class="text-center">
-              Wrong letters guessed
+              Wrong letters 
             </div>
           </div>
           <div class="row" >
             <div class="text-center" id="wrong-words">
-
             </div>
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <select class="form-select form-select-lg" id="letters">
+  
+              </select>
+            </div>
+            <div class="col-auto">
+              <button
+                id="calculate-button"
+                type="submit"
+                class="btn mb-3 btn-lg"
+              >
+                Guess
+              </button>
+            </div>
+            
           </div>
         </div>
         <div class="col-12 col-md-8">
-          <div class="row">
-            <div class="col-md-4 ">
+          <div class="row justify-content-between">
+            <div class="col-md-6 ">
               <div class="text-center stats-area">
-              Time Remaining:
+              Time:
               <span class="timer"></span>
+              Guesses:
+              <span class="guessesRemaining"></span>
             </div>
             </div>
-            <div class="col-md-4 ">
+            <div class="col-md-6 ">
               <div class="text-center stats-area">
-              wins: <span id="wins"></span>
+              wins: <span id="wins"></span> losses:<span id="losses"></span>
             </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
               <div class="text-center stats-area">
                 losses:<span id="losses"></span>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row">
             <div class="col">
