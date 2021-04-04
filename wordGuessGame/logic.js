@@ -16,7 +16,7 @@ let losses = localStorage.getItem("losses") || 0;
 winsEl.textContent = wins;
 lossesEl.textContent = losses;
 let lisfOfWrongLetters = [];
-let guessesLEft = 15;
+let guessesLEft = 20;
 let alphabet = [
   "a",
   "b",
