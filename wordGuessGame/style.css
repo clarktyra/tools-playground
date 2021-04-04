@@ -70,6 +70,20 @@ img {
   
 }
 
+#calculate-button {
+    background-color: #7F858D;
+    border-radius: 25px;
+}
+
+#calculate-button:hover {
+    background-color: #4B2E6B;
+}
+#letters {
+    background-color: #BCA8AF;
+    border-radius: 25px;
+    border-width: 0;
+}
+
 @media (max-width: 500px) {
     #wordArea {
         font-size: 40px;
